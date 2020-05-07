@@ -1,0 +1,27 @@
+{% if form.errors %}
+<br />
+<!--{% for field in form %}
+		{% for error in field.errors %}
+       	<div class="alert alert-danger">
+       		<span>{{ error|escape }}</span>
+       	</div> 
+       {% endfor %}
+     {% endfor %}-->
+{% for error in form.non_field_errors %}
+<div class="text-center alert alert-danger">
+	<span>{{ error|escape }}</span>
+</div>
+{% endfor %}
+{% endif %}
+
+{% for message in messages %}
+<br />
+<script type="text/javascript">
+	window.setTimeout("document.getElementById('Message').style.display='none';", 2000);
+</script>
+<div id="Message" class="text-center alert {{ message.tags }} alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+	</button>
+	{{ message }}
+</div>
+{% endfor %}

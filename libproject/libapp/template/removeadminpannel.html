@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}welcome{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-3 text-center ">
+		<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+			<a class="nav-link active border border-primary" id="v-pills-home-tab" data-toggle="pill"
+				href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">DEACTIVATE</a>
+			<a class="nav-link border border-primary" id="v-pills-profile-tab" data-toggle="pill"
+				href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">REFUTE</a>
+			<a class="nav-link border border-primary" id="v-pills-messages-tab" data-toggle="pill"
+				href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">REMOVE
+				ADMIN</a>
+			<a class="nav-link border border-primary" href="/adminpannel/" aria-selected="false">OTHER</a>
+			<a class="nav-link border border-primary" href="/logout/" aria-selected="false">LOGOUT</a>
+		</div>
+	</div>
+
+	<div class="col-sm-9">
+		<div class="tab-content" id="v-pills-tabContent">
+			<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+				{% include "deactivate.html" %}
+			</div>
+			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+				{% include "deverify.html" %}
+			</div>
+			<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+				{% include "deadmin.html" %}
+			</div>
+			<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

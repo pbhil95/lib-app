@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}issue book{% endblock %}
+{% block  content %}
+	{% if request.user.is_authenticated %}	
+<div id="tab4" class="col-sm-8 offset-sm-2">
+<h5 class="text-center">RETURN BOOK</h5>
+<br/>
+<form action="/returnbook/" method="POST">
+		{% csrf_token %}
+	<h6>
+			<div class="form-group">
+			{{ form.bid|as_crispy_field }}
+			</div>
+			<button type="submit" class="btn btn-success btn">Search Book</button>
+	</h6>
+</form>
+</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered"%>
+{% if form.img %}
+  <tr align="center">
+  	<td colspan="2"><img src="{{form.img.url}}" height="200px" width="200px" />
+  	</td>
+  </tr>
+  {% endif %}
+  <tr>
+    <td>Name</td>
+    <td>{{form.fname}}</td>
+  </tr>
+  <tr>
+    <td>Roll No</td>
+    <td>{{request.user}}</td>
+  </tr>
+    <tr>
+    <td>Total Book Issued</td>
+    <td>{{form.issue_count}}</td>
+  </tr>
+    <tr>
+    <td>Latest Issued Book</td>
+    <td>{{form.last_issuebook}}</td>
+  </tr>
+    <tr>
+    <td>Latest Retured Book</td>
+    <td>{{form.last_returnbook}}</td>
+  </tr>
+</table >
+</div>
+{% endblock %}

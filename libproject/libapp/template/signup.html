@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}login{% endblock %}
+{% block  content %}
+{% if not request.user.is_authenticated %}
+<!--col-sm-8 offset-sm-2-->
+<div class="">
+	<div class="card border-success mb-3 ">
+		<div class="card-header text-center bg-success">
+			<h4 class="text-center text-white">SIGNUP</h4>
+		</div>
+		<div class="card-body">
+			<br />
+			<form action="/signup/" method="POST">
+				{% csrf_token %}
+				<div class="form-group"> {{ form.roll|as_crispy_field }}
+					<div id="search_result"></div>
+				</div>
+				<div class="form-group"> {{ form.password1|as_crispy_field }}
+				</div>
+				<div class="form-group"> {{ form.password2|as_crispy_field }}
+				</div>
+				<button type="submit" class="btn btn-success btn">REGISTER
+				</button>
+			</form>
+			<script>
+				$(document).ready(function () {
+					$("#id_roll").keyup(function () {
+						var form = $(this).closest("form");
+						var search = $(this).val()
+						if ($(this).val().length >= 1) {
+							$.ajax({
+								method: "POST",
+								url: "/searchuser/",
+								data: form.serialize(),
+								dataType: 'JSON',
+								success: function (user) {
+									var str = JSON.stringify(user)
+									if (str.length > 2) {
+										$.each(user, function (index, value) {
+											if (value == 1) {
+												$("#search_result").html("<p id='search_result' class='alert alert-danger' role='alert'>User already exists</p>");
+											}
+											else {
+												$("#search_result").html("<p id='search_result' class='alert alert-success' role='alert'>User avilable</p>");
+											}
+										});
+									}
+								}
+							});
+						}
+					});
+				});
+			</script>
+			<br />
+			<h6><span class="font-italic font-weight-bold"> Already Have An Account?</span></h6>
+			<a href="/signin/"><span class="btn btn-primary btn">LOGIN NOW</span></a>
+		</div>
+		<br />
+		<div class="card-footer text-muted bg-success">
+			<p class=" font-italic text-center text-white">~ by Jawahar Naovodaya Vidyalaya</p>
+		</div>
+	</div>
+</div>
+<br />
+{% endif %}
+{% endblock %}

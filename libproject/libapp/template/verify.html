@@ -1,0 +1,58 @@
+<div class="table-responsive text-center">
+	<table class="table table-striped table-bordered" >
+		<h4 class="text-center text-white bg-dark">USER ACCOUNTS</h4>
+		 <thead class="thead-dark">
+			 <tr>
+			    <th scope="col">Roll No</th>
+			     <th scope="col">Action</th>
+			 </tr>
+		 </thead>
+		{% for row in data.values %}
+			{% if row.is_verified == 1 %}
+				<tr>
+					<td class="align-middle">
+					<a class="bg-transparent text-decoration-none openPopup"  href="javascript:void(0);" data-href="/profileverify/{{row.roll}}">{{row.roll}}</a>
+					</td>
+					<th class="align-middle text-center">
+						<a class="btn btn-success btn-sm active" role="button" aria-pressed="true" href="/verify/{{row.roll}}" >Verify</a>
+					</th>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table >
+</div>
+
+<script>
+$(document).ready(function(){
+    $('.openPopup').on('click',function(){
+        var dataURL = $(this).attr('data-href');
+        var str=dataURL
+        var last = str.substring(str.lastIndexOf("/") + 1, str.length);
+        $(".link").attr('href','/rejectprofile/'+last);		$(".modal-title").text("Profile Details User :  "+last);
+        $('.modal-body').load(dataURL,function(){
+            $('#exampleModal').modal({show:true});
+        });
+        
+    }); 
+});
+</script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="" class=" link btn btn-primary text-decoration-none bg-trasparent">REJECT</a>
+      </div>
+    </div>
+  </div>
+</div>

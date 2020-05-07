@@ -1,0 +1,42 @@
+<table class="table table-striped table-bordered" %>
+    {% for row in form %}
+    {% if row.img %}
+    <tr align="center">
+        <td colspan="2"><img src="{{ row.img.url }}" height="200px" width="200px" />
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td>First Name</td>
+        <td>{{ row.fname }}</td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>{{ row.lname }}</td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>{{ row.gender }}</td>
+    </tr>
+    <tr>
+        <td>Date Of Birth</td>
+        <td>{{ row.dob }}</td>
+    </tr>
+    <tr>
+        <td>Roll No</td>
+        <td>{{ row.roll }}</td>
+    </tr>
+    <tr>
+        <td>Class</td>
+        <td>{{ row.clss }}</td>
+    </tr>
+    <tr>
+        <td>Section</td>
+        <td>{{ row.section }}</td>
+    </tr>
+    <tr>
+        <td>Registration Date-Time</td>
+        <td>{{ row.datereg }}</td>
+    </tr>
+    {% endfor %}
+</table>

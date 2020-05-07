@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+		{% block title %}{% endblock %}
+		</title>
+		{% include "static.html" %}
+	</head>
+<body class="container">
+
+{% include "error.html" %}
+
+{% if request.user.is_authenticated %}
+	
+	{% if request.user.is_verified == 2 %}
+		{% include "nav.html" %}
+		
+	{% elif request.user.is_verified == 1 %}
+	</br>
+		<div class="card border-info mb-3 text-center">
+			  <div class="card-header">
+			    Welcome User : {{ request.user.roll}}
+			  </div>
+			  <div class="card-body text-info">
+			    <h5 class="card-title">Wait.....</h5>
+			    <p class="card-text">Your account has been sent for verification it will be activated soon by <span class="font-weight-bold">admin.</span></p>
+			    <a href="/logout/" class="btn btn-danger">Logout</a>
+			  </div>
+			  <div class="card-footer text-muted">
+			    <p class=" font-italic" >~ message by admin</p>
+			  </div>
+		</div>
+		
+	{% elif request.user.is_verified == 0 %}
+		</br>
+		<div class="card border-warning mb-3 text-center">
+			  <div class="card-header">
+			    Welcome User : {{ request.user.roll}}
+			  </div>
+			  <div class="card-body text-warning">
+			    <h5 class="card-title">Warning...</h5>
+			    <p class="card-text">Your account is not verified please update your profile details first.</p>
+			    <a href="/logout/" class="btn btn-danger mx-2">LOGOUT</a>
+			     <a href="/profile/" class="btn btn-success">UPDATE PROFILE</a>
+			  </div>
+			  <div class="card-footer text-muted">
+			    <p class=" font-italic" >~ message by admin</p>
+			  </div>
+		</div>
+	{% else %}
+		</br>
+		<div class="card border-danger mb-3 text-center">
+			  <div class="card-header">
+			    Welcome User : {{ request.user.roll}}
+			  </div>
+			  <div class="card-body text-danger">
+			    <h5 class="card-title">Error..</h5>
+			    <p class="card-text">Your account has been rejected by admin please correct your profile details first.</p>
+			    <a href="/logout/" class="btn btn-danger mx-2">LOGOUT</a>
+			     <a href="/profile/" class="btn btn-success">CORRECT PROFILE</a>
+			  </div>
+			  <div class="card-footer text-muted">
+			    <p class=" font-italic" >~ message by admin</p>
+			  </div>
+		</div>
+	{% endif %}
+{% endif %}
+
+</br>
+{% block content %}
+
+{% endblock %}
+</div>
+</body>
+</html>
+
