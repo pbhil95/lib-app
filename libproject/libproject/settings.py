@@ -146,17 +146,17 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = os.path.join(BASE_DIR, "/libapp/static/")
 
 STATIC_URL = "/libapp/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "libapp/static")]
+#STATICFILES_DIRS = os.path.join(BASE_DIR, "libapp/static")
 
+#STATIC_ROOT = os.path.join(BASE_DIR, "libapp/staticroot")
 #STATIC_ROOT = os.path.join(BASE_DIR,'' "libapp/static")
 
 MEDIA_URL = '/libapp/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'libapp/media')
+#MEDIA_ROOT = 'libapp/media'
 
 DATE_INPUT_FORMATS += ("%d-%m-%Y",)
 DATETIME_INPUT_FORMATS += ("%d-%m-%Y %H:%M:%S",)

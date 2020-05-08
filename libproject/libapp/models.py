@@ -83,9 +83,9 @@ class Profile(models.Model):
         return str(self.roll)
 
     def save(self, *args, **kwargs):
-        print(self.img)
-        new_image = compressImage.compress(self.img)
-        self.img = new_image
+        if self.img:
+            new_image = compressImage.compress(self.img)
+            self.img = new_image
         super().save(*args, **kwargs)
 
 
